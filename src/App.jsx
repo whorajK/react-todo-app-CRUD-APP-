@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import { AddTodo, TodoList } from "./components/main";
@@ -8,7 +8,24 @@ const App = () => {
   const [value, setValue] = useState("");
 
   // Tracks the state of todos
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedItems = localStorage.getItem("todos");
+
+    if (savedItems) {
+      // if items are saved parse data from the ls
+      return JSON.parse(savedItems);
+    } else {
+      return [];
+    }
+  });
+
+  // Tracks whether a todo is completed or not
+  const [checked, setChecked] = useState("false");
+
+  // UseEffect to run the component mounts
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos)); // Updates the ls when the state of todos changes
+  }, [todos]);
 
   // Functions addTodo
   const handelOnSubmit = (e) => {
@@ -30,8 +47,21 @@ const App = () => {
     };
 
     setTodos([...todos, newTodo]);
-    console.log(value, todos);
   };
+
+  // Functions for TodoList
+  const deleteListItem = (text) => {
+    const filteredItem = todos.filter((todo) => {
+      return todo !== text; // returns the filtered items as todo items
+    });
+    setTodos(filteredItem);
+  };
+
+  const markListItem = (e) => {
+    setChecked(!checked);
+    e.target.classList.toggle("linethrough");
+  };
+
   return (
     <>
       <Header />
@@ -40,7 +70,12 @@ const App = () => {
         setValue={setValue}
         handelOnSubmit={handelOnSubmit}
       />
-      <TodoList />
+      <TodoList
+        todos={todos}
+        checked={checked}
+        deleteListItem={deleteListItem}
+        markListItem={markListItem}
+      />
     </>
   );
 };

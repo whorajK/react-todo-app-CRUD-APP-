@@ -45,3 +45,18 @@ button {
 li {
   list-style: none;
 }
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Utility */
+.linethrough {
+  opacity: 0.8;
+  text-decoration-color: var(--black);
+}
+
+.linethrough::before {
+  color: var(--shade);
+  content: "completed";
+}
