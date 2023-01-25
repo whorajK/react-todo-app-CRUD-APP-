@@ -1,0 +1,107 @@
+/* Add Todo Section */
+.add-todo {
+  margin: 3rem auto;
+  padding: 1rem;
+}
+
+.add-todo form {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+label {
+  color: var(--purple);
+  left: 2%;
+  padding: 0.3rem;
+  position: absolute;
+  top: 20%;
+  transition: ease 0.2s all;
+}
+
+input {
+  flex: 1 0 80%;
+  border: 2px solid var(--white);
+  box-shadow: none;
+  color: #111;
+}
+
+input:focus {
+  border-color: var(--purple);
+}
+
+input:focus ~ label {
+  color: var(--purple);
+  left: 0;
+  top: -70%;
+}
+
+.add-todo button {
+  background: var(--purple);
+  color: var(--white);
+  margin: 0 0.2rem;
+}
+
+.add-todo button:hover {
+  border-radius: 0.5em;
+}
+
+/* Todo List Section */
+.todo-list {
+  padding: 2rem;
+  text-align: center;
+}
+
+.todo-list h1 {
+  margin-bottom: 2rem;
+}
+
+.todo-list--items,
+.todo-list--items li {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-list--items li {
+  align-items: center;
+  background-color: var(--purple);
+  box-shadow: 0 1px 3px var(--black);
+  color: var(--white);
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.todo-list button {
+  background: none;
+  border-radius: 0.5em;
+  margin: 0 0.2rem;
+}
+
+.todo-list button:hover {
+  color: var(--black);
+}
+
+@media screen and (max-width: 599px) {
+  .add-todo form {
+    flex-direction: column;
+  }
+
+  .add-todo button {
+    margin: 0.4rem 0;
+  }
+
+  .add-todo label {
+    top: 8%;
+  }
+
+  input:focus ~ label {
+    top: -30%;
+  }
+
+  .todo-list {
+    padding: 1rem;
+  }
+}

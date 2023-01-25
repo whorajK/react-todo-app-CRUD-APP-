@@ -1,0 +1,20 @@
+header {
+  background-color: var(--purple);
+  color: var(--white);
+  padding: 1rem 2rem;
+}
+
+h2 {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+}
+
+/* Media Queries */
+@media screen and (max-width: 599px) {
+  header {
+    padding: 1rem;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}

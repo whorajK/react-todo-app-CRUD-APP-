@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --white: #fefdff;
+  --black: #22223b;
+  --purple: #7389ae;
+  --shade: #e0e0e2;
+}
+
+html,
+body {
+  background-color: var(--shade);
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+button {
+  border: none;
+  color: inherit;
+  font-size: min(1rem, 1.2rem);
+  font-weight: bold;
+  outline: none;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  transition: all ease 0.2s;
+}
+
+button {
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
